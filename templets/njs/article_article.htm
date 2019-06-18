@@ -1,0 +1,24 @@
+{dede:include filename="head.htm"/}
+
+<body>
+<!--header begin-->
+	{dede:include filename="header.htm"/}
+<!--header end-->
+
+<!--content begin-->
+<div class="content">                
+   <div class="content_wrap">
+            <div class="details">	               
+	        <h2 style="color:#606060;"><b>{dede:field.title/}</b></h2>
+			<h5 style="color:#999;"><b>{dede:field.pubdate function="MyDate('Y-m-d H:i',@me)"/}&nbsp;&nbsp;&nbsp;&nbsp;浏览:<script src="{dede:field name='phpurl'/}/count.php?view=yes&aid={dede:field name='id'/}&mid={dede:field name='mid'/}" type='text/javascript' language="javascript"></script>次</b></h5>
+	        {dede:field.body/} 
+          </div>             
+	</div>              
+</div><!--content end-->
+
+
+<!--footer begin-->
+{dede:include filename="footer.htm"/}
+<!--footer end--> 
+</body>
+</html>

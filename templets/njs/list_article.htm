@@ -1,0 +1,48 @@
+{dede:include filename="head.htm"/}
+<style>
+	.mb a{color: #08c;
+    font-size: 14px;}
+</style>
+<body>
+	{dede:include filename="header.htm"/}
+
+	<!--content begin-->
+	<div class="content">
+		<div class="content_wrap">
+			<!-- 侧栏 -->
+			<div class="newslistside">
+				<p>
+					{dede:channel type='son'}
+					<span style="font-size:14px;"><a href="[field:typeurl/]">[field:typename/]</a></span> {/dede:channel}
+				</p>
+			</div>
+			<div style="float:left;">
+				<ul class="wrap-list">
+					<h1 class="mb">{dede:field name='position'/}</h1> {dede:list pagesize='10'}
+					<div class="sub_show_content">
+						<li>
+							<a href="[field:arcurl/]" target="_self"><span class="floatright fontnote">[field:pubdate function="GetDateMK(@me)"/]</span>
+								<span class="limit"><a href="[field:arcurl/]"  target="_self">[field:title/]</a></span></a>
+						</li>
+					</div>
+					{/dede:list}
+					<br>
+				</ul>
+				<div class="page">
+					<ol>
+						{dede:pagelist listitem="info,index,end,pre,next,pageno,option" listsize="5"/}
+					</ol>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!--content end-->
+	<div class="clearit"></div>
+
+	<!--footer begin-->
+	{dede:include filename="footer.htm"/}
+	<!--footer end-->
+</body>
+
+</html>

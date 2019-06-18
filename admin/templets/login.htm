@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+<title>南京市基层卫生协会管理后台</title>
+<link href="css/base.css" rel="stylesheet" type="text/css" />
+<link href="css/login.css" rel="stylesheet" type="text/css" />
+
+<script src="../include/js/jquery/jquery.js" language="javascript" type="text/javascript"></script>
+<script type="text/javascript">
+$ = jQuery;
+function changeAuthCode() {
+	var num = 	new Date().getTime();
+	var rand = Math.round(Math.random() * 10000);
+	num = num + rand;
+	$('#ver_code').css('visibility','visible');
+	if ($("#vdimgck")[0]) {
+		$("#vdimgck")[0].src = "../include/vdimgck.php?tag=" + num;
+	}
+	return false;	
+}
+</script>
+<style type="text/css">
+	html{height: 100%;}
+</style>
+</head>
+<body style="background: url(images/bg.jpg) center no-repeat;background-size: cover;">
+<div id="login-box">
+   <div class="login-top">
+   	南京市基层卫生协会管理后台
+   </div>
+   <!--<?php echo $redmsg; ?>-->
+   <div class="login-main">
+    <form name="form1" method="post" action="login.php">
+      <input type="hidden" name="gotopage" value="<?php if(!empty($gotopage)) echo RemoveXSS($gotopage);?>" />
+      <input type="hidden" name="dopost" value="login" />
+      <input name='adminstyle' type='hidden' value='newdedecms' />
+      <dl>
+	   <dt></dt>
+	   <dd><input type="text" placeholder="用户名" class="user" name="userid"/></dd>
+	   <dt></dt>
+	   <dd><input type="password" placeholder="密码" class="alltxt" name="pwd"/></dd>
+	   <?php
+        	if(preg_match("/6/",$safe_gdopen))
+        	{
+        ?>
+	   <dt></dt>
+	   <dd><input id="vdcode" type="text" name="validate" style="text-transform:uppercase;"/><img style="height: 35px;" id="vdimgck" align="absmiddle" onClick="this.src=this.src+'?'" style="cursor: pointer;" alt="看不清？点击更换" src="../include/vdimgck.php"/>
+           <a href="#" onClick="changeAuthCode();" style="font-size: 16px;">看不清？ </a></dd>
+		<?php
+       		}
+		?>
+		<dt>&nbsp;</dt>
+		<dd><button type="submit" name="sm1" class="login-btn" onclick="this.form.submit();">登录</button></dd>
+	 </dl>
+	</form>
+   </div>
+   <p style="position: fixed;width: 500px;bottom: 20px;left: 50%;margin-left: -250px;text-align: center;color: #ffffff;font-size: 16px;">Powered By 南京龙虎健康管理有限公司  All rights Reserved</p>
+</div>
+</body>
+</html>
